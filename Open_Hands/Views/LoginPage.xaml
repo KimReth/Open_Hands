@@ -11,7 +11,7 @@
             <Entry x:Name="Email" Text="{Binding Email}" Placeholder="Email" Keyboard="Email"/>
             <Entry x:Name="Password" Text="{Binding Password}" Placeholder="Password" IsPassword="True"/>
             <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}"/>
-            <Button VerticalOptions="Center" Text="Create Account" />
+            <Button VerticalOptions="Center" Text="Create Account" /> <!-- bind to take to create account page-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
