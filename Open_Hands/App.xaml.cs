@@ -1,5 +1,4 @@
-﻿using Open_Hands.Services;
-using Open_Hands.Views;
+﻿using Open_Hands.Views;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -12,8 +11,6 @@ namespace Open_Hands
         public App()
         {
             InitializeComponent();
-
-            DependencyService.Register<MockDataStore>();
             MainPage = new AppShell();
         }
 

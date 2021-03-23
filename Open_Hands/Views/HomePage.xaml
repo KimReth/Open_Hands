@@ -1,12 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Open_Hands"
              x:Class="Open_Hands.Views.HomePage">
+    <Shell.SearchHandler Keyboard="Default">
+        <controls:EventSearchHandler Placeholder ="Search by city or state..."/>
+    </Shell.SearchHandler>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to the Search!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Label VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand"
+                   Text="Welcome to the Open Hands!"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

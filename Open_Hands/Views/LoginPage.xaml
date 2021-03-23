@@ -6,12 +6,14 @@
              mc:Ignorable="d"
              x:Class="Open_Hands.Views.LoginPage"
              Shell.NavBarIsVisible="False">
-    <ContentPage.Content>
+    <ContentPage.Content>        
         <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
+            <Label Text="Welcome to Open Hands" HorizontalOptions="CenterAndExpand"/>
             <Entry x:Name="Email" Text="{Binding Email}" Placeholder="Email" Keyboard="Email"/>
             <Entry x:Name="Password" Text="{Binding Password}" Placeholder="Password" IsPassword="True"/>
             <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}"/>
-            <Button VerticalOptions="Center" Text="Create Account" /> <!-- bind to take to create account page-->
+            <Label Text="-------OR-------" HorizontalOptions="CenterAndExpand"/>
+            <Button VerticalOptions="Center" Text="Create Account" Command="{Binding NewAccountCommand}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

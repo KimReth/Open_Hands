@@ -1,12 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Open_Hands.Views.CreateAccountPage">
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             x:Class="Open_Hands.Views.CreateAccountPage"
+             Shell.NavBarIsVisible="False">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Create Account!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
+            <Entry x:Name="FirstName" Text="{Binding FirstName}" Placeholder="First Name"/>
+            <Entry x:Name="LastName" Text="{Binding LastName}" Placeholder="Last Name"/>
+            <Entry x:Name="Email" Text="{Binding Email}" Placeholder="Email"/>
+            <DatePicker x:Name="Birthdate" MinimumDate="01/01/1900" MaximumDate="{x:Static system:DateTime.Today}"/>
+            <Picker x:Name="Role" Title="Role">
+                <Picker.Items>
+                    <system:String>Volunteer</system:String>
+                    <system:String>Organizer</system:String>
+                </Picker.Items>
+            </Picker>
+            <Entry x:Name="Password" Text="{Binding Password}" Placeholder="Password"/>
+            <Entry x:Name="ConfirmPassword" Text="{Binding Password}" Placeholder="Confirm Password"/>
+            <Button x:Name="NewAccount" VerticalOptions="Center" Text="Create Account" Command="{Binding ConfirmNewAccountCommand}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
