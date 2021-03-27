@@ -15,8 +15,7 @@ namespace Open_Hands.Views
     {
         public CreateAccountPage()
         {
-            InitializeComponent();
-            this.BindingContext = new CreateAccountViewModel();
+            InitializeComponent();;
         }
     }
 }

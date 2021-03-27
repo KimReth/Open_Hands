@@ -2,8 +2,13 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:viewmodels="clr-namespace:Open_Hands.ViewModels"
              x:Class="Open_Hands.Views.CreateAccountPage"
              Shell.NavBarIsVisible="False">
+    
+    <ContentPage.BindingContext>
+        <viewmodels:CreateAccountViewModel/>
+    </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
             <Entry x:Name="FirstName" Text="{Binding FirstName}" Placeholder="First Name"/>

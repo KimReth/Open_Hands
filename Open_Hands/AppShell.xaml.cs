@@ -1,7 +1,4 @@
-﻿using Open_Hands.ViewModels;
-using Open_Hands.Views;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using Xamarin.Forms;
 
 namespace Open_Hands

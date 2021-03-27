@@ -44,10 +44,7 @@
                     </VisualStateGroupList>
                 </Setter>
             </Style>
-
-            <!--
-            Custom Style you can apply to any Flyout Item
-            -->
+            
             <Style Class="MenuItemLayoutStyle" TargetType="Layout" ApplyToDerivedTypes="True">
                 <Setter Property="VisualStateManager.VisualStateGroups">
                     <VisualStateGroupList>
@@ -64,6 +61,11 @@
         </ResourceDictionary>
     </Shell.Resources>
 
+    <TabBar>
+        <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
+        <ShellContent Route="CreateAccountPage" ContentTemplate="{DataTemplate local:CreateAccountPage}"/>
+    </TabBar>
+
     <FlyoutItem Title="Main Menu">
         <ShellContent Route="HomePage" ContentTemplate="{DataTemplate local:HomePage}" />
     </FlyoutItem>
@@ -74,21 +76,7 @@
         <ShellContent Route="UserEventPage" ContentTemplate="{DataTemplate local:UserEventPage}" />
     </FlyoutItem>
 
-
-    <!-- When the Flyout is visible this will be a menu item you can tie a click behavior to  -->
     <MenuItem Text="Logout" StyleClass="MenuItemLayoutStyle" Clicked="OnLogoutClicked">
-    </MenuItem>
-
-    <!--
-        TabBar lets you define content that won't show up in a flyout menu. When this content is active
-        the flyout menu won't be available. This is useful for creating areas of the application where 
-        you don't want users to be able to navigate away from. If you would like to navigate to this 
-        content you can do so by calling 
-        await Shell.Current.GoToAsync("//LoginPage");
-    -->
-    <TabBar>
-        <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
-        <ShellContent Route="CreateAccountPage" ContentTemplate="{DataTemplate local:CreateAccountPage}"/>
-    </TabBar>
+    </MenuItem>    
 
 </Shell>

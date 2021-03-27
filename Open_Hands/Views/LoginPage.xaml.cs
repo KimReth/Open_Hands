@@ -14,8 +14,7 @@ namespace Open_Hands.Views
     {
         public LoginPage()
         {
-            InitializeComponent();
-            this.BindingContext = new LoginViewModel();
+            InitializeComponent();            
         }
     }
 }
