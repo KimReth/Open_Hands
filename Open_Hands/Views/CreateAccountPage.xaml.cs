@@ -1,4 +1,6 @@
-﻿using Open_Hands.ViewModels;
+﻿using Open_Hands.Models;
+using Open_Hands.Persistence;
+using Open_Hands.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +17,8 @@ namespace Open_Hands.Views
     {
         public CreateAccountPage()
         {
-            InitializeComponent();;
+            InitializeComponent();
+            BindingContext = new CreateAccountViewModel();
         }
     }
 }

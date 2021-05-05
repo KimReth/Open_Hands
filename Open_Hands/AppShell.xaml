@@ -19,6 +19,7 @@
             </Style>
             <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
             <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}" />
+            
 
   
             <Style Class="FlyoutItemLabelStyle" TargetType="Label">
@@ -61,10 +62,17 @@
         </ResourceDictionary>
     </Shell.Resources>
 
-    <TabBar>
-        <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
-        <ShellContent Route="CreateAccountPage" ContentTemplate="{DataTemplate local:CreateAccountPage}"/>
-    </TabBar>
+    <ShellItem Route="LoginPage">
+        <ShellContent Title="Login" ContentTemplate="{DataTemplate local:LoginPage}" />
+    </ShellItem>
+    <ShellItem Route="CreateAccountPage">
+        <ShellContent Title="Create Account" ContentTemplate="{DataTemplate local:CreateAccountPage}"/>
+    </ShellItem>
+    <ShellItem Route="CreateEventPage">
+            <ShellContent Title="Create Event" ContentTemplate="{DataTemplate local:CreateEventPage}"/>
+    </ShellItem>
+
+
 
     <FlyoutItem Title="Main Menu">
         <ShellContent Route="HomePage" ContentTemplate="{DataTemplate local:HomePage}" />
@@ -74,6 +82,9 @@
     </FlyoutItem>
     <FlyoutItem Title="My Events">
         <ShellContent Route="UserEventPage" ContentTemplate="{DataTemplate local:UserEventPage}" />
+    </FlyoutItem>
+    <FlyoutItem Title="SignUp Demo Only">
+        <ShellContent Route="SignUpPage" ContentTemplate="{DataTemplate local:SignUpPage}"/>
     </FlyoutItem>
 
     <MenuItem Text="Logout" StyleClass="MenuItemLayoutStyle" Clicked="OnLogoutClicked">

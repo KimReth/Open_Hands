@@ -11,12 +11,12 @@ using Xamarin.Forms.Xaml;
 namespace Open_Hands.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ProfilePage : ContentPage
+    public partial class CreateEventPage : ContentPage
     {
-        public ProfilePage()
+        public CreateEventPage()
         {
             InitializeComponent();
-            BindingContext = new ProfileViewModel();
+            BindingContext = new CreateEventViewModel();
         }
     }
 }

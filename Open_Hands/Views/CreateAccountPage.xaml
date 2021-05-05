@@ -4,26 +4,37 @@
              xmlns:system="clr-namespace:System;assembly=mscorlib"
              xmlns:viewmodels="clr-namespace:Open_Hands.ViewModels"
              x:Class="Open_Hands.Views.CreateAccountPage"
-             Shell.NavBarIsVisible="False">
-    
+             Shell.FlyoutBehavior="Disabled">
+
     <ContentPage.BindingContext>
         <viewmodels:CreateAccountViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
-            <Entry x:Name="FirstName" Text="{Binding FirstName}" Placeholder="First Name"/>
-            <Entry x:Name="LastName" Text="{Binding LastName}" Placeholder="Last Name"/>
-            <Entry x:Name="Email" Text="{Binding Email}" Placeholder="Email"/>
-            <DatePicker x:Name="Birthdate" MinimumDate="01/01/1900" MaximumDate="{x:Static system:DateTime.Today}"/>
-            <Picker x:Name="Role" Title="Role">
-                <Picker.Items>
-                    <system:String>Volunteer</system:String>
-                    <system:String>Organizer</system:String>
-                </Picker.Items>
-            </Picker>
-            <Entry x:Name="Password" Text="{Binding Password}" Placeholder="Password"/>
-            <Entry x:Name="ConfirmPassword" Text="{Binding Password}" Placeholder="Confirm Password"/>
-            <Button x:Name="NewAccount" VerticalOptions="Center" Text="Create Account" Command="{Binding ConfirmNewAccountCommand}"/>
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Padding="10,10,10,10" VerticalOptions="Center">
+                <Label Text="First Name"/>
+                <Entry x:Name="FirstName" Text="{Binding FirstName}"/>
+                <Label Text="Last Name"/>
+                <Entry x:Name="LastName" Text="{Binding LastName}"/>
+                <Label Text="Phone Number"/>
+                <Entry x:Name="PhoneNum" Text="{Binding PhoneNum}"/>
+                <Label Text="Email"/>
+                <Entry x:Name="Email" Text="{Binding Email}" Keyboard="Email"/>
+                <Label Text="Birthdate"/>
+                <DatePicker x:Name="Birthdate" MinimumDate="01/01/1900" MaximumDate="{x:Static system:DateTime.Today}" Date="{Binding Birthdate}" />
+                <Label Text="Select Role"/>
+                <Picker x:Name="Role" SelectedItem="{Binding Role}">
+                    <Picker.Items>
+                        <system:String>Volunteer</system:String>
+                        <system:String>Organizer</system:String>
+                    </Picker.Items>
+                </Picker>
+                <Label Text="Password"/>
+                <Entry x:Name="Password" IsPassword="True" Text="{Binding Password}"/>
+                <Label Text="Confirm Password"/>
+                <Entry x:Name="ConfirmPassword" IsPassword="True"  Text="{Binding Password}"/>
+                <Button x:Name="NewAccount" VerticalOptions="Center" Text="Create Account" Command="{Binding ConfirmNewAccountCommand}"/>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

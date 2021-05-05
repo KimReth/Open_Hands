@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 namespace Open_Hands
 {
-    class EventSearchHandler : SearchHandler
+    public class EventSearchHandler : SearchHandler
     {
     //    public IList<Event> Events { get; set; }
     //    public Type SelectedItemNavigationTarget { get; set; }

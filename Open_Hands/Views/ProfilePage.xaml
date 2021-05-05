@@ -1,12 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:viewmodels="clr-namespace:Open_Hands.ViewModels"
              x:Class="Open_Hands.Views.ProfilePage">
+    
+    <ContentPage.BindingContext>
+        <viewmodels:LoginViewModel/>
+    </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to your Profile!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
+            <Label Text="{Binding FirstName}" />
+            <Label Text="{Binding LastName}" />
+            <Label Text="{Binding Email}"/>
+            <Label Text="{Binding EmailAddress}"/>
+            <Label Text="{Binding PhoneNum}"/>
+            <Label Text="{Binding Birthdate}"/>
+            <Label Text="{Binding Role}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

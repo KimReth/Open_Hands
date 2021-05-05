@@ -6,6 +6,7 @@
              xmlns:viewmodels="clr-namespace:Open_Hands.ViewModels"
              mc:Ignorable="d"
              x:Class="Open_Hands.Views.LoginPage"
+             Shell.FlyoutBehavior="Disabled"
              Shell.NavBarIsVisible="False">
     
     <ContentPage.BindingContext>
@@ -14,10 +15,10 @@
     <ContentPage.Content>        
         <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
             <Label Text="Welcome to Open Hands" HorizontalOptions="CenterAndExpand"/>
-            <Entry x:Name="Email" Text="{Binding Email}" Placeholder="Email" Keyboard="Email"/>
-            <Entry x:Name="Password" Text="{Binding Password}" Placeholder="Password" IsPassword="True"/>
+            <Entry Text="{Binding EmailLogin}" Placeholder="Email" Keyboard="Email" />
+            <Entry Text="{Binding PasswordLogin}" Placeholder="Password" IsPassword="True"/>
             <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}"/>
-            <Label Text="-------OR-------" HorizontalOptions="CenterAndExpand"/>
+            <Label Text="--------------- OR --------------" HorizontalOptions="CenterAndExpand"/>
             <Button VerticalOptions="Center" Text="Create Account" Command="{Binding NewAccountCommand}"/>
         </StackLayout>
     </ContentPage.Content>

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:viewmodels="clr-namespace:Open_Hands.ViewModels"
+             x:Class="Open_Hands.Views.SignUpPage">
+    <ContentPage.BindingContext>
+        <viewmodels:SignUpViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
+             <!--Display event title here-->
+                    <Label HorizontalTextAlignment="Center" Text="Are you the volunteer for this event?"/>
+                    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <RadioButton VerticalOptions="FillAndExpand" HorizontalOptions="Center" Grid.Column="0" Content="Yes" IsChecked="true" CheckedChanged="OnVolunteerRadioButtonCheckedChanged" />
+                    <RadioButton VerticalOptions="FillAndExpand" HorizontalOptions="Center" Grid.Column="1" Content="No" IsChecked="false" CheckedChanged="OnVolunteerRadioButtonCheckedChanged" />
+                    </Grid>
+            <!--All below labels and entries need to be disabled until radio button "No" is selected-->
+                    <Label Text="First Name"/>
+                    <Entry x:Name="FirstName" Text="{Binding FirstName}"/>
+                    <Label Text="Last Name"/>
+                    <Entry x:Name="LastName" Text="{Binding LastName}"/>
+                    <Label Text="Email"/>
+                    <Entry x:Name="Email" Text="{Binding Email}" Keyboard="Email"/>
+                    <Label Text="Phone Number"/>
+                    <Entry x:Name="PhoneNum" Text="{Binding PhoneNum}"/>
+                    <Label Text="Birthdate"/>
+                    <DatePicker x:Name="Birthdate" MinimumDate="01/01/1900" MaximumDate="{x:Static system:DateTime.Today}"/>
+                    <Label Text="Comments"/>
+                    <Entry x:Name="Comments" Text="{Binding Comments}"/>
+                    <Button VerticalOptions="Center" Text="Sign Up Now" Command="{Binding SignUpNowCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,5 +1,6 @@
 ﻿using System;
 using Xamarin.Forms;
+using Open_Hands.Views;
 
 namespace Open_Hands
 {
@@ -12,7 +13,7 @@ namespace Open_Hands
 
         private async void OnLogoutClicked(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync("//LoginPage");
+            await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
         }
     }
 }

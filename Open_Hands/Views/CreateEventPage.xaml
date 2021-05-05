@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:viewmodels="clr-namespace:Open_Hands.ViewModels"
+             x:Class="Open_Hands.Views.CreateEventPage">
+    <ContentPage.BindingContext>
+        <viewmodels:CreateEventViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <ScrollView>
+        <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
+            <Label Text="Event Name"/>
+            <Entry x:Name="EventName" Text="{Binding EventName}"/>
+            <Label Text="Street Address"/>
+            <Entry x:Name="Street" Text="{Binding Street}"/>
+            <Label Text="City"/>
+            <Entry x:Name="City" Text="{Binding City}"/>
+            <Label Text="State"/>
+            <Entry x:Name="State" Text="{Binding State}"/>
+            <Label Text="Zip Code"/>
+            <Entry x:Name="Zip" Text="{Binding Zip}"/>
+            <Label Text="Date of Event"/>
+            <DatePicker x:Name="StartingDate" MinimumDate="{x:Static system:DateTime.Today}" MaximumDate="12/31/2030"/>
+            <Label Text="Starting Time"/>
+            <TimePicker x:Name="StartTime" Time="{Binding StartTime}"/>
+            <Label Text="End Date of Event"/>
+            <DatePicker x:Name="EndingDate" MinimumDate="{x:Static system:DateTime.Today}" MaximumDate="12/31/2030"/>
+            <Label Text="Ending Time"/>
+            <TimePicker x:Name="EndTime" Time="{Binding EndTime}"/>
+            <Label Text="Contact Phone Number"/>
+            <Entry x:Name="ContactPhoneNum" Text="{Binding ContactPhoneNum}"/>
+            <Label Text="Contact First Name"/>
+            <Entry x:Name="ContactFirstName" Text="{Binding ContactFirstName}"/>
+            <Label Text="Contact Last Name"/>
+            <Entry x:Name="ContactLastName" Text="{Binding ContactLastName}"/>
+            <Label Text="Maximum Number of Volunteers"/>
+            <Entry x:Name="MaxVolunteers" Text="{Binding MaxVolunteers}"/>
+            <Label Text="Description of Event"/>
+            <Entry x:Name="Description" Text="{Binding Description}"/>
+            <Button VerticalOptions="Center" Text="Publish Event" Command="{Binding PublishEventCommand}"/>
+        </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

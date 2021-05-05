@@ -2,12 +2,17 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:Open_Hands"
+             xmlns:viewmodels="clr-namespace:Open_Hands.ViewModels"
              x:Class="Open_Hands.Views.HomePage">
+    <ContentPage.BindingContext>
+        <viewmodels:HomeViewModel/>
+    </ContentPage.BindingContext>
     <Shell.SearchHandler Keyboard="Default">
         <controls:EventSearchHandler Placeholder ="Search by city or state..."/>
     </Shell.SearchHandler>
     <ContentPage.Content>
         <StackLayout>
+            <Button Text="Create An Event" HorizontalOptions="FillAndExpand" Command="{Binding CreateEventCommand}"/>
             <Label VerticalOptions="CenterAndExpand" 
                    HorizontalOptions="CenterAndExpand"
                    Text="Welcome to the Open Hands!"/>
