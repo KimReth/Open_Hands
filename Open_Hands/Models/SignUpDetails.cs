@@ -12,7 +12,7 @@ namespace Open_Hands.Models
 
         public int IdEventDetails { get; set; }
 
-        public int IdUserDetails { get; set; }
+        //public int IdUserDetails { get; set; }
 
         public bool IsVolunteer { get; set; }
 

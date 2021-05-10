@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Open_Hands.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace Open_Hands.Views
         public SignUpPage()
         {
             InitializeComponent();
+            BindingContext = new SignUpViewModel();
         }
         public void OnVolunteerRadioButtonCheckedChanged(object sender, CheckedChangedEventArgs e)
         {

@@ -27,11 +27,11 @@ namespace Open_Hands.Models
 
         public DateTime StartingDate { get; set; }
 
-        public DateTime StartTime { get; set; }
+        //public DateTime StartTime { get; set; }
 
         public DateTime EndingDate { get; set; }
 
-        public DateTime EndTime { get; set; }
+       // public DateTime EndTime { get; set; }
 
         [MaxLength(225)]
         public string Description { get; set; }

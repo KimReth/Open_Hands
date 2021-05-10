@@ -11,24 +11,23 @@
         <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
              <!--Display event title here-->
                     <Label HorizontalTextAlignment="Center" Text="Are you the volunteer for this event?"/>
-                    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-                    <RadioButton VerticalOptions="FillAndExpand" HorizontalOptions="Center" Grid.Column="0" Content="Yes" IsChecked="true" CheckedChanged="OnVolunteerRadioButtonCheckedChanged" />
-                    <RadioButton VerticalOptions="FillAndExpand" HorizontalOptions="Center" Grid.Column="1" Content="No" IsChecked="false" CheckedChanged="OnVolunteerRadioButtonCheckedChanged" />
-                    </Grid>
-            <!--All below labels and entries need to be disabled until radio button "No" is selected-->
-                    <Label Text="First Name"/>
-                    <Entry x:Name="FirstName" Text="{Binding FirstName}"/>
-                    <Label Text="Last Name"/>
-                    <Entry x:Name="LastName" Text="{Binding LastName}"/>
-                    <Label Text="Email"/>
-                    <Entry x:Name="Email" Text="{Binding Email}" Keyboard="Email"/>
-                    <Label Text="Phone Number"/>
-                    <Entry x:Name="PhoneNum" Text="{Binding PhoneNum}"/>
-                    <Label Text="Birthdate"/>
-                    <DatePicker x:Name="Birthdate" MinimumDate="01/01/1900" MaximumDate="{x:Static system:DateTime.Today}"/>
-                    <Label Text="Comments"/>
-                    <Entry x:Name="Comments" Text="{Binding Comments}"/>
-                    <Button VerticalOptions="Center" Text="Sign Up Now" Command="{Binding SignUpNowCommand}"/>
+            <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <RadioButton VerticalOptions="FillAndExpand" HorizontalOptions="Center" Grid.Column="0" Content="Yes" IsChecked="true" CheckedChanged="OnVolunteerRadioButtonCheckedChanged" />
+                <RadioButton VerticalOptions="FillAndExpand" HorizontalOptions="Center" Grid.Column="1" Content="No" IsChecked="false" CheckedChanged="OnVolunteerRadioButtonCheckedChanged" />
+            </Grid>
+                <Label Text="First Name"/>
+                <Entry x:Name="FirstName" Text="{Binding FirstName}"/>
+                <Label Text="Last Name"/>
+                <Entry x:Name="LastName" Text="{Binding LastName}"/>
+                <Label Text="Email"/>
+                <Entry x:Name="Email" Text="{Binding Email}" Keyboard="Email"/>
+                <Label Text="Phone Number"/>
+                <Entry x:Name="PhoneNum" Text="{Binding PhoneNum}"/>
+                <Label Text="Birthdate"/>
+                <DatePicker x:Name="Birthdate" MinimumDate="01/01/1900" MaximumDate="{x:Static system:DateTime.Today}"/>
+                <Label Text="Comments"/>
+                <Entry x:Name="Comments" Text="{Binding Comments}"/>
+                <Button VerticalOptions="Center" Text="Sign Up Now" Command="{Binding SignUpNowCommand}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

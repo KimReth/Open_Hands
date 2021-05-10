@@ -35,8 +35,16 @@ namespace Open_Hands.Persistence
 
         public async Task<IEnumerable<EventDetails>> GetEvents()
         {
-            var y = await _connection.Table<EventDetails>().ToListAsync();
-            return y;
+            IEnumerable<EventDetails> LOED = new List<EventDetails>();
+            try
+            {
+                LOED = await _connection.Table<EventDetails>().ToListAsync();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            return LOED;
         }
 
         public async Task UpdateEvent(EventDetails events)

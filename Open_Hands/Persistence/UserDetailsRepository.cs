@@ -51,7 +51,7 @@ namespace Open_Hands.Persistence
         public async Task<bool> VerifyLogin(string EmailLogin, string PasswordLogin)
         {
             //find user for email, handle not existing, compare password entered if exists
-            var loginQuery = _connection.Table<UserDetails>().Where(u => u.Email == EmailLogin && u.Password == PasswordLogin).FirstOrDefaultAsync();
+            var loginQuery = await _connection.Table<UserDetails>().Where(u => u.Email == EmailLogin && u.Password == PasswordLogin).FirstOrDefaultAsync();
 
             if (loginQuery != null)
             {

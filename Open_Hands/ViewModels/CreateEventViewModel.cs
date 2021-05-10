@@ -36,14 +36,16 @@ namespace Open_Hands.ViewModels
         private DateTime startingDate;
         public DateTime StartingDate { get { return startingDate; } set { SetProperty(ref startingDate, value); } }
 
-        private DateTime startTime;
-        public DateTime StartTime { get { return startTime; } set { SetProperty(ref startTime, value); } }
+        //private DateTime startTime;
+        //public DateTime StartTime { get { return startTime; } set { SetProperty(ref startTime, value); } }
 
         private DateTime endingDate;
         public DateTime EndingDate { get { return endingDate; } set { SetProperty(ref endingDate, value); } }
 
-        private DateTime endTime;
-        public DateTime EndTime { get { return endTime; } set { SetProperty(ref endTime, value); } }
+        //private DateTime endTime;
+        //public DateTime EndTime { get { return endTime; } set { SetProperty(ref endTime, value); } }
+
+        public string TimeSlot { get { return string.Format($"{StartingDate} - {EndingDate}"); } }
 
         private string city;
         public string City { get { return city; } set { SetProperty(ref city, value); } }
@@ -53,6 +55,8 @@ namespace Open_Hands.ViewModels
 
         private string zip;
         public string Zip { get { return zip; } set { SetProperty(ref zip, value); } }
+
+        public string FullAddress {  get { return string.Format($"{City}, {State}"); } }
 
         private string contactPhoneNum;
         public string ContactPhoneNum { get { return contactPhoneNum; } set { SetProperty(ref contactPhoneNum, value); } }
@@ -81,9 +85,9 @@ namespace Open_Hands.ViewModels
                     Description = this.Description,
                     MaxVolunteers = this.MaxVolunteers,
                     StartingDate = this.StartingDate,
-                    EndingDate = this.EndingDate,
-                    StartTime = this.StartTime,
-                    EndTime = this.EndTime
+                    EndingDate = this.EndingDate
+                    //StartTime = this.StartTime,
+                    //EndTime = this.EndTime
                 });
             }
             catch (Exception ex)

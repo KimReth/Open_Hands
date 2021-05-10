@@ -21,13 +21,13 @@
             <Label Text="Zip Code"/>
             <Entry x:Name="Zip" Text="{Binding Zip}"/>
             <Label Text="Date of Event"/>
-            <DatePicker x:Name="StartingDate" MinimumDate="{x:Static system:DateTime.Today}" MaximumDate="12/31/2030"/>
+            <DatePicker x:Name="StartingDate" MinimumDate="{x:Static system:DateTime.Today}" MaximumDate="12/31/2030" Date="{Binding StartingDate}"/>
             <Label Text="Starting Time"/>
-            <TimePicker x:Name="StartTime" Time="{Binding StartTime}"/>
+            <TimePicker x:Name="StartTime" Time="{Binding StartingDate.TimeOfDay}"/>
             <Label Text="End Date of Event"/>
-            <DatePicker x:Name="EndingDate" MinimumDate="{x:Static system:DateTime.Today}" MaximumDate="12/31/2030"/>
+            <DatePicker x:Name="EndingDate" MinimumDate="{x:Static system:DateTime.Today}" MaximumDate="12/31/2030" Date="{Binding EndingDate}"/>
             <Label Text="Ending Time"/>
-            <TimePicker x:Name="EndTime" Time="{Binding EndTime}"/>
+            <TimePicker x:Name="EndTime" Time="{Binding EndingDate.TimeOfDay}"/>
             <Label Text="Contact Phone Number"/>
             <Entry x:Name="ContactPhoneNum" Text="{Binding ContactPhoneNum}"/>
             <Label Text="Contact First Name"/>
