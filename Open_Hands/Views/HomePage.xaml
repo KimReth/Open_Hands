@@ -3,8 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:Open_Hands"
              xmlns:viewmodels="clr-namespace:Open_Hands.ViewModels"
-             xmlns:model="clr-namespace:Open_Hands.Models"
-             x:Class="Open_Hands.Views.HomePage">
+             xmlns:model="clr-namespace:Open_Hands.Models;assembly=Open_Hands"
+             x:Class="Open_Hands.Views.HomePage"
+             x:DataType="viewmodels:HomeViewModel">
     <ContentPage.BindingContext>
         <viewmodels:HomeViewModel/>
     </ContentPage.BindingContext>
@@ -14,14 +15,29 @@
     
     <ContentPage.Content>
         <StackLayout>
-        <Button Text="Create An Event" VerticalOptions="Start" Command="{Binding CreateEventCommand}"/>
-            <ListView ItemsSource="{Binding Events}">
-                <!--<ListView.ItemTemplate>
-                    <DataTemplate>
-                        <TextCell Text="{Binding EventName}"/>
+            <Button Text="Create An Event" VerticalOptions="Start" Command="{Binding CreateEventCommand}"/>
+            <CollectionView ItemsSource="{Binding Events}"  ItemsLayout="VerticalList">
+                <!--SelectedItem="{Binding SelectedEvent, Mode=TwoWay}" SelectionMode="Single"-->
+                <CollectionView.EmptyView>
+                    <StackLayout Padding="12">
+                        <Label HorizontalOptions="Center" Text="No Events"/>
+                    </StackLayout>
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:EventDetails">
+                        <Grid Padding="10">
+                            <Frame>
+                                <StackLayout Orientation="Horizontal">
+                                    <StackLayout VerticalOptions="Center">
+                                        <Label Text="{Binding EventName}" VerticalOptions="Center" />
+                                        <Label Text="{Binding StartingDate}" VerticalOptions="Center" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
                     </DataTemplate>
-                </ListView.ItemTemplate>-->
-            </ListView>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
