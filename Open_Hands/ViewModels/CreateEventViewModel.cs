@@ -3,6 +3,7 @@ using Open_Hands.Persistence;
 using Open_Hands.Views;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 using Xamarin.Forms;
 
@@ -36,16 +37,19 @@ namespace Open_Hands.ViewModels
         private DateTime startingDate;
         public DateTime StartingDate { get { return startingDate; } set { SetProperty(ref startingDate, value); } }
 
-        //private DateTime startTime;
-        //public DateTime StartTime { get { return startTime; } set { SetProperty(ref startTime, value); } }
+        private DateTime startTime;
+        public DateTime StartTime { get { return startTime; } set { SetProperty(ref startTime, value); } }
 
         private DateTime endingDate;
         public DateTime EndingDate { get { return endingDate; } set { SetProperty(ref endingDate, value); } }
 
-        //private DateTime endTime;
-        //public DateTime EndTime { get { return endTime; } set { SetProperty(ref endTime, value); } }
+        private DateTime endTime;
+        public DateTime EndTime { get { return endTime; } set { SetProperty(ref endTime, value); } }
 
-        public string TimeSlot { get { return string.Format($"{StartingDate} - {EndingDate}"); } }
+
+        //public TimeSpan StartSpan { get { return StartTime.TimeOfDay; } set { StartTime.TimeOfDay = value; } }
+
+        //public string TimeSlot { get { return string.Format($"{StartingDate} - {EndingDate}"); } }
 
         private string city;
         public string City { get { return city; } set { SetProperty(ref city, value); } }
@@ -67,6 +71,14 @@ namespace Open_Hands.ViewModels
         private int maxVolunteers;
         public int MaxVolunteers { get { return maxVolunteers; } set { SetProperty(ref maxVolunteers, value); } }
 
+        //public void DatePicker_StartingDateSelected()
+        //{
+        //    StartingDate = StartDate.Date.ToString(CultureInfo.InvariantCulture) + " " + StartTime.TimeOfDay.ToString();
+        //}
+        //public void DatePicker_EndingDateSelected()
+        //{
+        //    EndingDate = EndDate.Date.ToString(CultureInfo.InvariantCulture) + " " + EndTime.TimeOfDay.ToString();
+        //}
         public async void OnPublishEventClicked()
         {
             try
@@ -85,9 +97,9 @@ namespace Open_Hands.ViewModels
                     Description = this.Description,
                     MaxVolunteers = this.MaxVolunteers,
                     StartingDate = this.StartingDate,
-                    EndingDate = this.EndingDate
-                    //StartTime = this.StartTime,
-                    //EndTime = this.EndTime
+                    EndingDate = this.EndingDate,
+                    StartTime = this.StartTime,
+                    EndTime = this.EndTime
                 });
             }
             catch (Exception ex)

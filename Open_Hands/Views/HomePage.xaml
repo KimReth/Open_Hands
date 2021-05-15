@@ -12,32 +12,47 @@
     <Shell.SearchHandler Keyboard="Default">
         <controls:EventSearchHandler Placeholder ="Search by city or state..."/>
     </Shell.SearchHandler>
-    
+
     <ContentPage.Content>
-        <StackLayout>
-            <Button Text="Create An Event" VerticalOptions="Start" Command="{Binding CreateEventCommand}"/>
-            <CollectionView ItemsSource="{Binding Events}"  ItemsLayout="VerticalList">
-                <!--SelectedItem="{Binding SelectedEvent, Mode=TwoWay}" SelectionMode="Single"-->
-                <CollectionView.EmptyView>
-                    <StackLayout Padding="12">
-                        <Label HorizontalOptions="Center" Text="No Events"/>
-                    </StackLayout>
-                </CollectionView.EmptyView>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="model:EventDetails">
-                        <Grid Padding="10">
-                            <Frame>
-                                <StackLayout Orientation="Horizontal">
-                                    <StackLayout VerticalOptions="Center">
-                                        <Label Text="{Binding EventName}" VerticalOptions="Center" />
-                                        <Label Text="{Binding StartingDate}" VerticalOptions="Center" />
-                                    </StackLayout>
-                                </StackLayout>
-                            </Frame>
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </StackLayout>
+        <RefreshView Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsBusy, Mode=OneWay}" RefreshColor="SlateGray">
+            <ScrollView>
+                <StackLayout>
+                    <Button Text="Create An Event" VerticalOptions="Start" Command="{Binding CreateEventCommand}"/>
+                    <CollectionView ItemsSource="{Binding Events}"  ItemsLayout="VerticalList" SelectionChangedCommand="{Binding EventClickedCommand}" SelectedItem="{Binding SelectedEvent, Mode=TwoWay}" SelectionMode="Single">
+                        <CollectionView.EmptyView>
+                            <StackLayout Padding="12">
+                                <Label HorizontalOptions="Center" Text="No Events"/>
+                            </StackLayout>
+                        </CollectionView.EmptyView>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="model:EventDetails">
+                                <SwipeView>
+                                    <SwipeView.RightItems>
+                                        <!--<SwipeItem Command="{Binding SelectedEvent}" BackgroundColor="LimeGreen" Text="Details"/>-->
+                                    </SwipeView.RightItems>                                
+                                <Grid Padding="10">
+                                    <Frame>
+                                        <StackLayout Orientation="Horizontal">
+                                            <StackLayout VerticalOptions="Center">
+                                                <Label Text="{Binding EventName}" VerticalOptions="Center" />
+                                                    <Label>
+                                                        <Label.Text>
+                                                            <MultiBinding StringFormat="{} {0} - {1}">
+                                                                <Binding Path="StartingDate"/>
+                                                                <Binding Path="EndingDate"/>
+                                                            </MultiBinding>
+                                                        </Label.Text>
+                                                    </Label>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </Frame>
+                                </Grid>
+                                </SwipeView>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </ScrollView>
+        </RefreshView>
     </ContentPage.Content>
 </ContentPage>

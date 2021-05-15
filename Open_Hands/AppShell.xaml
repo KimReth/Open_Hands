@@ -71,6 +71,9 @@
     <ShellItem Route="CreateEventPage">
             <ShellContent Title="Create Event" ContentTemplate="{DataTemplate local:CreateEventPage}"/>
     </ShellItem>
+    <ShellItem Route="PostDetailPage">
+        <ShellContent Title="Event Details" ContentTemplate="{DataTemplate local:PostDetailPage}"/>
+    </ShellItem>
 
 
 
