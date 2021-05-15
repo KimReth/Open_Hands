@@ -1,5 +1,4 @@
-﻿using Open_Hands.Views;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace Open_Hands
 {

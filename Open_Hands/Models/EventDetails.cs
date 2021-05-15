@@ -1,7 +1,5 @@
 ﻿using SQLite;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Open_Hands.Models
 {
@@ -9,7 +7,7 @@ namespace Open_Hands.Models
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
-        
+
         [MaxLength(50)]
         public string EventName { get; set; }
 
@@ -31,7 +29,7 @@ namespace Open_Hands.Models
 
         public DateTime EndingDate { get; set; }
 
-       public DateTime EndTime { get; set; }
+        public DateTime EndTime { get; set; }
 
         [MaxLength(225)]
         public string Description { get; set; }

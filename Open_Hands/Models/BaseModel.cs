@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Open_Hands.Models
+﻿namespace Open_Hands.Models
 {
     class BaseModel
     {

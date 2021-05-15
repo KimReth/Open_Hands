@@ -2,9 +2,6 @@
 using Open_Hands.Persistence;
 using Open_Hands.Views;
 using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Text;
 using Xamarin.Forms;
 
 namespace Open_Hands.ViewModels
@@ -33,7 +30,7 @@ namespace Open_Hands.ViewModels
 
         private string street;
         public string Street { get { return street; } set { SetProperty(ref street, value); } }
-        
+
         private DateTime startingDate;
         public DateTime StartingDate { get { return startingDate; } set { SetProperty(ref startingDate, value); } }
 
@@ -60,7 +57,7 @@ namespace Open_Hands.ViewModels
         private string zip;
         public string Zip { get { return zip; } set { SetProperty(ref zip, value); } }
 
-        public string FullAddress {  get { return string.Format($"{City}, {State}"); } }
+        public string FullAddress { get { return string.Format($"{City}, {State}"); } }
 
         private string contactPhoneNum;
         public string ContactPhoneNum { get { return contactPhoneNum; } set { SetProperty(ref contactPhoneNum, value); } }

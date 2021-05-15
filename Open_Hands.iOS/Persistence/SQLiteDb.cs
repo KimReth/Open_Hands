@@ -1,13 +1,8 @@
-﻿using Foundation;
-using Open_Hands.iOS;
+﻿using Open_Hands.iOS;
 using Open_Hands.Persistence;
 using SQLite;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using UIKit;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(SQLiteDb))]

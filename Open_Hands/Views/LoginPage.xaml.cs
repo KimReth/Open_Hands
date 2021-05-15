@@ -1,12 +1,4 @@
-﻿using Open_Hands.Models;
-using Open_Hands.Persistence;
-using Open_Hands.ViewModels;
-using SQLite;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Open_Hands.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 

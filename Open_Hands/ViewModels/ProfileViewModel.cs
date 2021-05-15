@@ -1,9 +1,6 @@
 ﻿using Open_Hands.Persistence;
 using Open_Hands.ViewModels;
 using SQLite;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xamarin.Forms;
 
 namespace Open_Hands.Views

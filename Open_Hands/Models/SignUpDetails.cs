@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using SQLite;
+﻿using SQLite;
+using System;
 
 namespace Open_Hands.Models
 {
@@ -22,7 +20,7 @@ namespace Open_Hands.Models
 
         [MaxLength(50)]
         public string LastName { get; set; }
-        
+
         public DateTime Birthdate { get; set; }
 
         [MaxLength(50)]

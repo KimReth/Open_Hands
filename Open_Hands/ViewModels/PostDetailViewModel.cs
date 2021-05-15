@@ -1,7 +1,4 @@
 ﻿using Open_Hands.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Open_Hands.ViewModels
 {

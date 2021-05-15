@@ -1,7 +1,5 @@
 ﻿using SQLite;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Open_Hands.Models
 {
@@ -28,6 +26,6 @@ namespace Open_Hands.Models
         public string Email { get; set; }
 
         [MaxLength(225)]
-        public string Password { get; set; }                   
+        public string Password { get; set; }
     }
 }

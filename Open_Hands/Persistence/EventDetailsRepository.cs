@@ -2,7 +2,6 @@
 using SQLite;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -40,7 +39,7 @@ namespace Open_Hands.Persistence
             {
                 LOED = await _connection.Table<EventDetails>().ToListAsync();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }

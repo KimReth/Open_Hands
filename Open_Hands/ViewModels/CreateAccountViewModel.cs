@@ -1,9 +1,7 @@
 ﻿using Open_Hands.Models;
-using Open_Hands.Views;
 using Open_Hands.Persistence;
+using Open_Hands.Views;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using Xamarin.Forms;
 
 
@@ -25,21 +23,21 @@ namespace Open_Hands.ViewModels
         }
 
 
-       
+
         private string firstName;
-        public string FirstName {  get { return firstName; } set {SetProperty(ref firstName, value); } }
+        public string FirstName { get { return firstName; } set { SetProperty(ref firstName, value); } }
 
         private string lastName;
         public string LastName { get { return lastName; } set { SetProperty(ref lastName, value); } }
 
         private string phone;
-        public string PhoneNum { get { return phone; } set { SetProperty(ref phone, value); } } 
+        public string PhoneNum { get { return phone; } set { SetProperty(ref phone, value); } }
 
         private string email;
         public string Email { get { return email; } set { SetProperty(ref email, value); } }
 
         private DateTime birthdate;
-        public DateTime Birthdate { get { return birthdate; } set { SetProperty(ref birthdate, value); } } 
+        public DateTime Birthdate { get { return birthdate; } set { SetProperty(ref birthdate, value); } }
 
         private string role;
         public string Role { get { return role; } set { SetProperty(ref role, value); } }
@@ -64,11 +62,11 @@ namespace Open_Hands.ViewModels
                     Password = this.Password
                 });
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
             await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
         }
-    }    
+    }
 }

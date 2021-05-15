@@ -1,12 +1,6 @@
-﻿using Open_Hands.Views;
-using System;
-using System.Collections.Generic;
-using SQLite;
-
+﻿using Open_Hands.Persistence;
+using Open_Hands.Views;
 using Xamarin.Forms;
-using Open_Hands.Persistence;
-using System.Threading.Tasks;
-using Open_Hands.Models;
 
 namespace Open_Hands.ViewModels
 {
@@ -19,12 +13,12 @@ namespace Open_Hands.ViewModels
         public string PasswordLogin { get; set; }
 
         public LoginViewModel()
-        {            
+        {
             NewAccountCommand = new Command(OnCreateClicked);
             LoginCommand = new Command(OnLoginClicked);
             _userDetails = new UserDetailsRepository();
 
-        }  
+        }
 
         private async void OnLoginClicked(object obj)
         {
@@ -42,7 +36,7 @@ namespace Open_Hands.ViewModels
         private async void OnCreateClicked(object obj)
         {
             await Shell.Current.GoToAsync($"//{nameof(CreateAccountPage)}");
-        }       
+        }
 
     }
 }

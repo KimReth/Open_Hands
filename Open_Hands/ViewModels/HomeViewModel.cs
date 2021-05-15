@@ -3,9 +3,6 @@ using MvvmHelpers.Commands;
 using Open_Hands.Models;
 using Open_Hands.Persistence;
 using Open_Hands.Views;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
