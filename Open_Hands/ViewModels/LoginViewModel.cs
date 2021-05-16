@@ -35,7 +35,7 @@ namespace Open_Hands.ViewModels
 
         private async void OnCreateClicked(object obj)
         {
-            await Shell.Current.GoToAsync($"//{nameof(CreateAccountPage)}");
+            await Shell.Current.Navigation.PushAsync(new CreateAccountPage());
         }
 
     }

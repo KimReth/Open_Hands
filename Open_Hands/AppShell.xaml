@@ -65,15 +65,15 @@
     <ShellItem Route="LoginPage">
         <ShellContent Title="Login" ContentTemplate="{DataTemplate local:LoginPage}" />
     </ShellItem>
-    <ShellItem Route="CreateAccountPage">
+    <!--<ShellItem Route="CreateAccountPage">
         <ShellContent Title="Create Account" ContentTemplate="{DataTemplate local:CreateAccountPage}"/>
-    </ShellItem>
+    </ShellItem>-->
     <ShellItem Route="CreateEventPage">
             <ShellContent Title="Create Event" ContentTemplate="{DataTemplate local:CreateEventPage}"/>
     </ShellItem>
-    <ShellItem Route="PostDetailPage">
+    <!--<ShellItem Route="PostDetailPage">
         <ShellContent Title="Event Details" ContentTemplate="{DataTemplate local:PostDetailPage}"/>
-    </ShellItem>
+    </ShellItem>-->
 
 
 
@@ -86,9 +86,9 @@
     <FlyoutItem Title="My Events">
         <ShellContent Route="UserEventPage" ContentTemplate="{DataTemplate local:UserEventPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="SignUp Demo Only">
+    <!--<FlyoutItem Title="SignUp Demo Only">
         <ShellContent Route="SignUpPage" ContentTemplate="{DataTemplate local:SignUpPage}"/>
-    </FlyoutItem>
+    </FlyoutItem>-->
 
     <MenuItem Text="Logout" StyleClass="MenuItemLayoutStyle" Clicked="OnLogoutClicked">
     </MenuItem>    

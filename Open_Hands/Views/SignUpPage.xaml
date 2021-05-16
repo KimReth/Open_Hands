@@ -27,7 +27,7 @@
                 <DatePicker x:Name="Birthdate" MinimumDate="01/01/1900" MaximumDate="{x:Static system:DateTime.Today}"/>
                 <Label Text="Comments"/>
                 <Entry x:Name="Comments" Text="{Binding Comments}"/>
-                <Button VerticalOptions="Center" Text="Sign Up Now" Command="{Binding SignUpNowCommand}"/>
+                <Button VerticalOptions="Center" Text="Sign Up" Command="{Binding SignUpNowCommand}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

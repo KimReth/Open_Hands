@@ -2,12 +2,37 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:Open_Hands.ViewModels"
              x:Class="Open_Hands.Views.PostDetailPage">
-    <ContentPage.BindingContext>
-            <viewmodels:HomeViewModel/>
-        </ContentPage.BindingContext>
-        <ContentPage.Content>
-            <StackLayout>
-                <Label Text="{Binding EventName}"/>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Center" >
+                <Label FontSize="16" FontAttributes="Bold" HorizontalOptions="Center" Text="{Binding EventName}"/>
+                <Label HorizontalOptions="Center" Text="{Binding StartingDate, StringFormat= '{0:MM/dd/yyyy}'}"/>
+                <Label HorizontalOptions="Center" Text="{Binding StartTime, StringFormat= '{0:HH:mm}'}"/>
+                <Label HorizontalOptions="Center" Text="{Binding EndingDate, StringFormat= '{0:MM/dd/yyyy}'}"/>
+                <Label HorizontalOptions="Center" Text="{Binding EndTime, StringFormat= '{0:HH:mm}'}"/>
+                <Label HorizontalOptions="Center" Text="{Binding Description}"/>
+                <Label HorizontalOptions="Center" Text="{Binding Street}"/>
+                <Label HorizontalOptions="Center">
+                    <Label.Text>
+                        <MultiBinding StringFormat="{} {0}, {1} {2}">
+                            <Binding Path="City"/>
+                            <Binding Path="State"/>
+                            <Binding Path="Zip"/>
+                        </MultiBinding>
+                    </Label.Text>
+                </Label>
+                <Label HorizontalOptions="Center">
+                    <Label.Text>
+                        <MultiBinding StringFormat="{} {0} {1}">
+                            <Binding Path="ContactFirstName"/>
+                            <Binding Path="ContactLastName"/>
+                        </MultiBinding>
+                    </Label.Text>
+                </Label>
+                <Label HorizontalOptions="Center" Text="{Binding ContactPhoneNum}"/>
+                <Label HorizontalOptions="Center" Text="{Binding MaxVolunteers}"/>
+                <Button VerticalOptions="Center" Text="Sign Up Now!" Clicked="OnSignUpClicked"/>
             </StackLayout>
-        </ContentPage.Content>
+        </ScrollView>
+    </ContentPage.Content>
 </ContentPage>

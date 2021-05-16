@@ -1,5 +1,5 @@
-﻿using Open_Hands.ViewModels;
-
+﻿using Open_Hands.Models;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -8,16 +8,14 @@ namespace Open_Hands.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PostDetailPage : ContentPage
     {
-        public PostDetailPage()
+        public PostDetailPage(EventDetails eventDetails)
         {
             InitializeComponent();
-            BindingContext = new PostDetailViewModel();
+            this.BindingContext = eventDetails;
         }
-        //public PostDetail(EventDetails eventDetails)
-        //{
-        //    InitializeComponent();
-        //    postDetailViewModel = new PostDetailViewModel(eventDetails);
-        //    this.BindingContext = postDetailViewModel;
-        //}
+        public async void OnSignUpClicked(object obj, EventArgs args)
+        {
+            await Shell.Current.Navigation.PushAsync(new SignUpPage());
+        }
     }
 }

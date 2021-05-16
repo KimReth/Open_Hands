@@ -11,26 +11,26 @@ namespace Open_Hands.ViewModels
     public class HomeViewModel : BaseViewModel
     {
         public Xamarin.Forms.Command CreateEventCommand { get; }
-
         public Xamarin.Forms.Command EventClickedCommand { get; }
+        public Xamarin.Forms.Command SignUpCommand { get; }
         public IEventDetails _eventDetails;
         public EventDetails EventDetails { get; set; }
-        public PostDetailViewModel postDetailViewModel;
         public AsyncCommand RefreshCommand { get; }
         public ObservableRangeCollection<EventDetails> Events { get; set; }
 
-        EventDetails selectedEvent;
+
         public HomeViewModel()
         {
-            postDetailViewModel = new PostDetailViewModel();
             CreateEventCommand = new Xamarin.Forms.Command(OnCreateEventClicked);
             EventClickedCommand = new Xamarin.Forms.Command(OnEventClicked);
+            SignUpCommand = new Xamarin.Forms.Command(OnSignUpClicked);
             RefreshCommand = new AsyncCommand(Refresh);
             _eventDetails = new EventDetailsRepository();
             Events = new ObservableRangeCollection<EventDetails>();
             DisplayEvents();
         }
 
+        EventDetails selectedEvent;
         public EventDetails SelectedEvent
         {
             get
@@ -59,10 +59,13 @@ namespace Open_Hands.ViewModels
             Events.AddRange(events);
         }
 
+        public async void OnSignUpClicked(object obj)
+        {
+            await Shell.Current.Navigation.PushAsync(new SignUpPage());
+        }
         public async void OnEventClicked(object obj)
         {
-            postDetailViewModel.SelectionInfo(SelectedEvent);
-            await Shell.Current.GoToAsync($"//{nameof(PostDetailPage)}");
+            await Shell.Current.Navigation.PushAsync(new PostDetailPage(SelectedEvent));
         }
         private async void OnCreateEventClicked(object obj)
         {
