@@ -1,4 +1,5 @@
 ﻿
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,5 +13,6 @@ namespace Open_Hands.Views
             InitializeComponent();
             BindingContext = new ProfileViewModel();
         }
+
     }
 }

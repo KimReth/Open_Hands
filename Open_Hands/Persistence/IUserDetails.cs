@@ -13,6 +13,7 @@ namespace Open_Hands.ViewModels
         Task UpdateUser(UserDetails user);
         Task DeleteUser(UserDetails user);
         Task<bool> VerifyLogin(string EmailLogin, string PasswordLogin);
+        Task<UserDetails> GetUserByEmail(string emailLogin);
 
     }
 }

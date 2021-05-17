@@ -72,5 +72,11 @@ namespace Open_Hands.Persistence
             }
         }
 
+        public async Task<UserDetails> GetUserByEmail(string emailLogin)
+        {
+            var user = await _connection.Table<UserDetails>().Where(u => u.Email == emailLogin).FirstOrDefaultAsync();
+            return user;
+        }
+
     }
 }
