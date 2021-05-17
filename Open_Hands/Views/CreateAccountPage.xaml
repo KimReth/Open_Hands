@@ -32,7 +32,7 @@
                 <Label Text="Password"/>
                 <Entry x:Name="Password" IsPassword="True" Text="{Binding Password}"/>
                 <Label Text="Confirm Password"/>
-                <Entry x:Name="ConfirmPassword" IsPassword="True"  Text="{Binding Password}"/>
+                <Entry x:Name="ConfirmPassword" IsPassword="True"  Text="{Binding ConfirmPassword}"/>
                 <Button x:Name="NewAccount" VerticalOptions="Center" Text="Create Account" Command="{Binding ConfirmNewAccountCommand}"/>
             </StackLayout>
         </ScrollView>

@@ -18,8 +18,16 @@ namespace Open_Hands.Persistence
         }
         public async Task<int> CreateEvent(EventDetails events)
         {
-            var x = await _connection.InsertAsync(events);
-            return x;
+            if (events.EventName == null || events.City == null || events.State == null || events.Street == null || events.Zip == null || events.ContactFirstName == null || events.ContactLastName == null || events.ContactPhoneNum == null)
+            {
+                var x = 0;
+                return x;
+            }
+            else
+            {
+                var x = await _connection.InsertAsync(events);
+                return x;
+            }
         }
 
         public async Task DeleteEvent(EventDetails events)

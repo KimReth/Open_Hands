@@ -12,12 +12,13 @@ namespace Open_Hands.ViewModels
         public string EmailLogin { get; set; }
         public string PasswordLogin { get; set; }
 
+        
         public LoginViewModel()
         {
             NewAccountCommand = new Command(OnCreateClicked);
             LoginCommand = new Command(OnLoginClicked);
             _userDetails = new UserDetailsRepository();
-
+            MessagingCenter.Send<LoginViewModel, string>(this, "Hi", EmailLogin);
         }
 
         private async void OnLoginClicked(object obj)
@@ -29,7 +30,7 @@ namespace Open_Hands.ViewModels
             }
             else
             {
-                //TODO: Display failure message
+                await App.Current.MainPage.DisplayAlert("Failure", "Username And Password Does Not Exist", "Try Again");
             }
         }
 

@@ -8,10 +8,10 @@ namespace Open_Hands.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SignUpPage : ContentPage
     {
-        public SignUpPage()
+        public SignUpPage(int eventID)
         {
             InitializeComponent();
-            BindingContext = new SignUpViewModel();
+            BindingContext = new SignUpViewModel(eventID);
         }
         public void OnVolunteerRadioButtonCheckedChanged(object sender, CheckedChangedEventArgs e)
         {

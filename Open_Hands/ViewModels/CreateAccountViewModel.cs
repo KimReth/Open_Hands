@@ -45,28 +45,51 @@ namespace Open_Hands.ViewModels
         private string password;
         public string Password { get { return password; } set { SetProperty(ref password, value); } }
 
+        private string confirmPassword;
+        public string ConfirmPassword { get { return confirmPassword; } set { SetProperty(ref confirmPassword, value); } }
+
 
         public async void OnCreateConfirmClicked()
         {
-            try
+            if (Password != ConfirmPassword)
             {
-                await _userDetails.CreateUser(new UserDetails
+                await App.Current.MainPage.DisplayAlert("Failure!", "Passwords Do Not Match", "I'll Try Again");
+            }
+            else
+            {
+                try
                 {
-                    Id = this.Id,
-                    FirstName = this.FirstName,
-                    LastName = this.LastName,
-                    PhoneNum = this.PhoneNum,
-                    Email = this.Email,
-                    Birthdate = this.Birthdate,
-                    Role = this.Role,
-                    Password = this.Password
-                });
+                    var x = await _userDetails.CreateUser(new UserDetails
+                    {
+                        Id = this.Id,
+                        FirstName = this.FirstName,
+                        LastName = this.LastName,
+                        PhoneNum = this.PhoneNum,
+                        Email = this.Email,
+                        Birthdate = this.Birthdate,
+                        Role = this.Role,
+                        Password = this.Password
+                    });
+
+                    if (x == 1)
+                    {
+                        await App.Current.MainPage.DisplayAlert("Success!", "Account Created", "Sweet");
+                        await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
+                    }
+                    else if (x == 0)
+                    {
+                        await App.Current.MainPage.DisplayAlert("Failure!", "No Entry Can Be Blank", "Oops");
+                    }
+                    else if (x == 2)
+                    {
+                        await App.Current.MainPage.DisplayAlert("Failure!", "That's Not A Valid Email", "My Bad");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
             }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
         }
     }
 }

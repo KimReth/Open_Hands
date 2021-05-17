@@ -2,6 +2,7 @@
 using Open_Hands.ViewModels;
 using SQLite;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -24,9 +25,21 @@ namespace Open_Hands.Persistence
 
         public async Task<int> CreateUser(UserDetails user)
         {
-            var x = await _connection.InsertAsync(user);
-            return x;
-
+            if (user.FirstName == null || user.LastName == null || user.Email == null || user.Password == null || user.PhoneNum == null)
+            {
+                var x = 0;
+                return x;
+            }
+            else if (!user.Email.Contains("@") || !user.Email.Contains("."))
+            {
+                var x = 2;
+                return x;
+            }
+            else
+            {
+                var x = await _connection.InsertAsync(user);
+                return x;
+            }
         }
 
         public async Task UpdateUser(UserDetails user)
@@ -47,10 +60,9 @@ namespace Open_Hands.Persistence
 
         public async Task<bool> VerifyLogin(string EmailLogin, string PasswordLogin)
         {
-            //find user for email, handle not existing, compare password entered if exists
-            var loginQuery = await _connection.Table<UserDetails>().Where(u => u.Email == EmailLogin && u.Password == PasswordLogin).FirstOrDefaultAsync();
+            var loginQuery = await _connection.Table<UserDetails>().Where(u => u.Email == EmailLogin && u.Password == PasswordLogin).ToListAsync();
 
-            if (loginQuery != null)
+            if (loginQuery.Count() > 0)
             {
                 return true;
             }

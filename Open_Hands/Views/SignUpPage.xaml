@@ -4,13 +4,10 @@
              xmlns:system="clr-namespace:System;assembly=mscorlib"
              xmlns:viewmodels="clr-namespace:Open_Hands.ViewModels"
              x:Class="Open_Hands.Views.SignUpPage">
-    <ContentPage.BindingContext>
-        <viewmodels:SignUpViewModel/>
-    </ContentPage.BindingContext>
+
     <ContentPage.Content>
         <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
-             <!--Display event title here-->
-                    <Label HorizontalTextAlignment="Center" Text="Are you the volunteer for this event?"/>
+            <Label HorizontalTextAlignment="Center" Text="Are you the volunteer for this event?"/>
             <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                 <RadioButton VerticalOptions="FillAndExpand" HorizontalOptions="Center" Grid.Column="0" Content="Yes" IsChecked="true" CheckedChanged="OnVolunteerRadioButtonCheckedChanged" />
                 <RadioButton VerticalOptions="FillAndExpand" HorizontalOptions="Center" Grid.Column="1" Content="No" IsChecked="false" CheckedChanged="OnVolunteerRadioButtonCheckedChanged" />
@@ -24,7 +21,7 @@
                 <Label Text="Phone Number"/>
                 <Entry x:Name="PhoneNum" Text="{Binding PhoneNum}"/>
                 <Label Text="Birthdate"/>
-                <DatePicker x:Name="Birthdate" MinimumDate="01/01/1900" MaximumDate="{x:Static system:DateTime.Today}"/>
+                <DatePicker x:Name="Birthdate" MinimumDate="01/01/1900" MaximumDate="{x:Static system:DateTime.Today}" Date="{Binding Birthdate}"/>
                 <Label Text="Comments"/>
                 <Entry x:Name="Comments" Text="{Binding Comments}"/>
                 <Button VerticalOptions="Center" Text="Sign Up" Command="{Binding SignUpNowCommand}"/>

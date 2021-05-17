@@ -34,19 +34,14 @@ namespace Open_Hands.ViewModels
         private DateTime startingDate;
         public DateTime StartingDate { get { return startingDate; } set { SetProperty(ref startingDate, value); } }
 
-        private DateTime startTime;
-        public DateTime StartTime { get { return startTime; } set { SetProperty(ref startTime, value); } }
+        private TimeSpan startTime;
+        public TimeSpan StartTime { get { return startTime; } set { SetProperty(ref startTime, value); } }
 
         private DateTime endingDate;
         public DateTime EndingDate { get { return endingDate; } set { SetProperty(ref endingDate, value); } }
 
-        private DateTime endTime;
-        public DateTime EndTime { get { return endTime; } set { SetProperty(ref endTime, value); } }
-
-
-        //public TimeSpan StartSpan { get { return StartTime.TimeOfDay; } set { StartTime.TimeOfDay = value; } }
-
-        //public string TimeSlot { get { return string.Format($"{StartingDate} - {EndingDate}"); } }
+        private TimeSpan endTime;
+        public TimeSpan EndTime { get { return endTime; } set { SetProperty(ref endTime, value); } }
 
         private string city;
         public string City { get { return city; } set { SetProperty(ref city, value); } }
@@ -68,19 +63,11 @@ namespace Open_Hands.ViewModels
         private int maxVolunteers;
         public int MaxVolunteers { get { return maxVolunteers; } set { SetProperty(ref maxVolunteers, value); } }
 
-        //public void DatePicker_StartingDateSelected()
-        //{
-        //    StartingDate = StartDate.Date.ToString(CultureInfo.InvariantCulture) + " " + StartTime.TimeOfDay.ToString();
-        //}
-        //public void DatePicker_EndingDateSelected()
-        //{
-        //    EndingDate = EndDate.Date.ToString(CultureInfo.InvariantCulture) + " " + EndTime.TimeOfDay.ToString();
-        //}
         public async void OnPublishEventClicked()
         {
             try
             {
-                await _eventDetails.CreateEvent(new EventDetails
+                var x = await _eventDetails.CreateEvent(new EventDetails
                 {
                     Id = this.Id,
                     ContactFirstName = this.ContactFirstName,
@@ -98,12 +85,21 @@ namespace Open_Hands.ViewModels
                     StartTime = this.StartTime,
                     EndTime = this.EndTime
                 });
+                if (x == 1)
+                {
+                    await App.Current.MainPage.DisplayAlert("Success!", "Event Created", "Sweet");
+                    await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
+                }
+                else if (x == 0)
+                {
+                    await App.Current.MainPage.DisplayAlert("Failure!", "No Entry Can Be Blank", "Oops");
+                }
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-            await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
+            
         }
     }
 }

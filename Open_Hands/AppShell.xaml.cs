@@ -9,9 +9,10 @@ namespace Open_Hands
         public AppShell()
         {
             InitializeComponent();
+            Routing.RegisterRoute(nameof(CreateAccountPage), typeof(CreateAccountPage));
             Routing.RegisterRoute(nameof(PostDetailPage), typeof(PostDetailPage));
             Routing.RegisterRoute(nameof(SignUpPage), typeof(SignUpPage));
-            Routing.RegisterRoute(nameof(CreateAccountPage), typeof(CreateAccountPage));
+            Routing.RegisterRoute(nameof(CreateEventPage), typeof(CreateEventPage));
 
         }
 

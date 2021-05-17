@@ -14,11 +14,15 @@ namespace Open_Hands.ViewModels
         public Command SignUpNowCommand { get; set; }
         public int Id { get; set; }
 
-        public SignUpViewModel()
+        public SignUpViewModel(int eventID)
         {
             _signUpDetails = new SignUpDetailsRepository();
             SignUpNowCommand = new Command(OnSignUpNowClicked);
+            this.EventID = eventID;
         }
+
+        private int eventID;
+        public int EventID { get { return eventID;} set { SetProperty(ref eventID, value); } }
 
         private bool isVolunteer;
         public bool IsVolunteer { get { return isVolunteer; } set { SetProperty(ref isVolunteer, value); } }
@@ -41,14 +45,15 @@ namespace Open_Hands.ViewModels
         private string comments;
         public string Comments { get { return comments; } set { SetProperty(ref comments, value); } }
 
+
         private async void OnSignUpNowClicked(object obj)
         {
             try
             {
-                await _signUpDetails.CreateSignUp(new SignUpDetails
+                var x = await _signUpDetails.CreateSignUp(new SignUpDetails
                 {
-                    //TODO: set value of event ID once implemented properly
                     Id = this.Id,
+                    IdEventDetails = this.EventID,
                     FirstName = this.FirstName,
                     LastName = this.LastName,
                     PhoneNum = this.PhoneNum,
@@ -57,12 +62,24 @@ namespace Open_Hands.ViewModels
                     IsVolunteer = this.IsVolunteer,
                     Comments = this.Comments
                 });
+                if (x==0)
+                {
+                    await App.Current.MainPage.DisplayAlert("Failure!", "No Entry Can Be Blank", "Oops");
+                }
+                else if (x==1)
+                {
+                    await App.Current.MainPage.DisplayAlert("Success!", "Check Your Email For Further Information", "Sweet");
+                    await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
+                }
+                else if (x==2)
+                {
+                    await App.Current.MainPage.DisplayAlert("Failure!", "That's Not A Valid Email", "My Bad");
+                }
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-            await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
         }
     }
 }

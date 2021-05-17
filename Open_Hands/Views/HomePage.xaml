@@ -17,8 +17,8 @@
         <RefreshView Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsBusy, Mode=OneWay}" RefreshColor="SlateGray">
             <ScrollView>
                 <StackLayout>
-                    <Button Text="Create An Event" VerticalOptions="Start" Command="{Binding CreateEventCommand}"/>
-                    <CollectionView ItemsSource="{Binding Events}" ItemsLayout="VerticalList" SelectionChangedCommand="{Binding EventClickedCommand}" BackgroundColor="LimeGreen" SelectedItem="{Binding SelectedEvent, Mode=TwoWay}" SelectionMode="Single">
+                    <Button BorderColor="White" Text="Create An Event" VerticalOptions="Start" Command="{Binding CreateEventCommand}"/>
+                    <CollectionView ItemsSource="{Binding Events}" ItemsLayout="VerticalList" SelectionChangedCommand="{Binding EventClickedCommand}"  BackgroundColor="LimeGreen" SelectedItem="{Binding SelectedEvent, Mode=TwoWay}" SelectionMode="Single">
                         <CollectionView.EmptyView>
                             <StackLayout Padding="12">
                                 <Label HorizontalOptions="Center" Text="No Events"/>
@@ -26,28 +26,25 @@
                         </CollectionView.EmptyView>
                         <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="model:EventDetails">
-                                <SwipeView>
-                                    <SwipeView.RightItems>
-                                        <!--<SwipeItem Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:HomeViewModel}}, Path=SignUpCommand}" BackgroundColor="LimeGreen" Text="Sign Up!"/>-->
-                                    </SwipeView.RightItems>                                
                                 <Grid Padding="10">
                                     <Frame>
                                         <StackLayout Orientation="Horizontal">
                                             <StackLayout VerticalOptions="Center">
                                                 <Label Text="{Binding EventName}" VerticalOptions="Center" />
-                                                    <Label>
-                                                        <Label.Text>
-                                                            <MultiBinding StringFormat="{} {0} - {1}">
-                                                                <Binding Path="StartingDate"/>
-                                                                <Binding Path="EndingDate"/>
-                                                            </MultiBinding>
-                                                        </Label.Text>
-                                                    </Label>
+                                                <Label>
+                                                    <Label.Text>
+                                                        <MultiBinding StringFormat="{} {0:MM/dd/yyyy} {1} - {2:MM/dd/yyyy} {3}">
+                                                            <Binding Path="StartingDate"/>
+                                                            <Binding Path="StartTime"/>
+                                                            <Binding Path="EndingDate"/>
+                                                            <Binding Path="EndTime"/>
+                                                        </MultiBinding>
+                                                    </Label.Text>
+                                                </Label>
                                             </StackLayout>
                                         </StackLayout>
                                     </Frame>
                                 </Grid>
-                                </SwipeView>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>

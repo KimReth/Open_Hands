@@ -18,8 +18,21 @@ namespace Open_Hands.Persistence
         }
         public async Task<int> CreateSignUp(SignUpDetails signUp)
         {
-            var x = await _connection.InsertAsync(signUp);
-            return x;
+            if (signUp.FirstName == null || signUp.LastName == null || signUp.Email == null || signUp.PhoneNum == null)
+            {
+                var x = 0;
+                return x;
+            }
+            else if (!signUp.Email.Contains("@") || !signUp.Email.Contains("."))
+            {
+                var x = 2;
+                return x;
+            }
+            else
+            {
+                var x = await _connection.InsertAsync(signUp);
+                return x;
+            }
         }
 
         public async Task DeleteSignUp(SignUpDetails signUp)
