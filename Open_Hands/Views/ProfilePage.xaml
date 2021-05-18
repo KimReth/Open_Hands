@@ -20,7 +20,7 @@
             <Label Text="{Binding PhoneNum}" HorizontalOptions="Center" IsVisible="{Binding OrgPhoneVisible}"/>
             <Label Text="{Binding Birthdate, StringFormat ='{0:MM/dd/yyyy}'}" HorizontalOptions="Center" IsVisible="{Binding OrgBirthVisible}"/>
             <Label Text="{Binding Role}" HorizontalOptions="Center" IsVisible="{Binding OrgRoleVisible}"/>
-
+            <Label Text=""/>
             <Button x:Name="EditProfile" VerticalOptions="Center" Text="Edit Profile" Command="{Binding EditProfileCommand}" IsVisible="{Binding EditVisible}"/>
 
             <Entry Text="{Binding FirstName}" IsVisible="{Binding FirstNameVisible}"/>

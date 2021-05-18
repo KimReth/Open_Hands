@@ -2,6 +2,7 @@
 using SQLite;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -43,6 +44,7 @@ namespace Open_Hands.Persistence
         public async Task<IEnumerable<EventDetails>> GetEvents()
         {
             IEnumerable<EventDetails> LOED = new List<EventDetails>();
+            IEnumerable<EventDetails> ListOfEvents = new List<EventDetails>();
             try
             {
                 LOED = await _connection.Table<EventDetails>().ToListAsync();
@@ -51,7 +53,17 @@ namespace Open_Hands.Persistence
             {
                 throw ex;
             }
-            return LOED;
+
+            foreach (EventDetails eventdetail in LOED)
+            {
+                if(eventdetail.StartingDate < DateTime.Now)
+                {
+                    await DeleteEvent(eventdetail);
+                }
+            }
+
+            ListOfEvents = await _connection.Table<EventDetails>().ToListAsync();
+            return ListOfEvents;
         }
 
         public async Task UpdateEvent(EventDetails events)
