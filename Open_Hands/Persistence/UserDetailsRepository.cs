@@ -42,9 +42,23 @@ namespace Open_Hands.Persistence
             }
         }
 
-        public async Task UpdateUser(UserDetails user)
+        public async Task<int> UpdateUser(UserDetails user)
         {
-            await _connection.UpdateAsync(user);
+            if (user.FirstName == null || user.LastName == null ||  user.Password == null || user.PhoneNum == null)
+            {
+                var x = 0;
+                return x;
+            }
+            else if (!user.Email.Contains("@") || !user.Email.Contains("."))
+            {
+                var x = 2;
+                return x;
+            }
+            else
+            {
+                var x = await _connection.UpdateAsync(user);
+                return x;
+            }
         }
 
         public async Task<UserDetails> GetUser(int id)

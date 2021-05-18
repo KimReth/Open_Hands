@@ -10,7 +10,7 @@ namespace Open_Hands.ViewModels
         Task<IEnumerable<UserDetails>> GetUsers();
         Task<int> CreateUser(UserDetails user);
         Task<UserDetails> GetUser(int id);
-        Task UpdateUser(UserDetails user);
+        Task<int> UpdateUser(UserDetails user);
         Task DeleteUser(UserDetails user);
         Task<bool> VerifyLogin(string EmailLogin, string PasswordLogin);
         Task<UserDetails> GetUserByEmail(string emailLogin);

@@ -10,7 +10,6 @@ namespace Open_Hands.ViewModels
         public IUserDetails _userDetails;
         public Command NewAccountCommand { get; }
         public Command LoginCommand { get; }  
-        //public ProfilePage profilePage { get; }
         public string EmailLogin { get; set; }
         public string PasswordLogin { get; set; }
         

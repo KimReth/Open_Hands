@@ -28,6 +28,7 @@ namespace Open_Hands.Views
             var emailLogin = Preferences.Get("UserEmail", "");
             var user = await _userDetails.GetUserByEmail(emailLogin);
 
+            Id = user.Id;
             FirstName = user.FirstName;
             LastName = user.LastName;
             PhoneNum = user.PhoneNum;
@@ -39,7 +40,11 @@ namespace Open_Hands.Views
         public void VisibilityStart()
         {
             EditVisible = true;
-            //TODO: Set initial label visibilities to true
+            NameVisible = true;
+            OrgEmailVisible = true;
+            OrgPhoneVisible = true;
+            OrgBirthVisible = true;
+            OrgRoleVisible = true;
         }
         public void OnEditProfileClicked()
         {
@@ -54,12 +59,71 @@ namespace Open_Hands.Views
             ConfirmVisible = true;
 
             EditVisible = false;
-            //TODO: Set visibilities to false of other initial labels and add their properties
+            NameVisible = false;
+            OrgEmailVisible = false;
+            OrgPhoneVisible = false;
+            OrgBirthVisible = false;
+            OrgRoleVisible = false;
         }
-        public void OnSaveClicked()
+        public async void OnSaveClicked()
         {
-            //TODO: save new input to datebase. Link repo=>update
+            if (Password != ConfirmPass)
+            {
+                await App.Current.MainPage.DisplayAlert("Failure!", "Passwords Do Not Match", "I'll Try Again");
+            }
+            else
+            {
+                try
+                {
+                    var x = await _userDetails.UpdateUser(new UserDetails
+                    {
+                        Id = Id,
+                        FirstName = FirstName,
+                        LastName = LastName,
+                        PhoneNum = PhoneNum,
+                        Email = Email,
+                        Birthdate = Birthdate,
+                        Role = Role,
+                        Password = Password
+                    });
+
+                    if (x == 1)
+                    {
+                        await App.Current.MainPage.DisplayAlert("Success!", "Profile Updated", "Sweet");
+
+                        EditVisible = true;
+                        NameVisible = true;
+                        OrgEmailVisible = true;
+                        OrgPhoneVisible = true;
+                        OrgBirthVisible = true;
+                        OrgRoleVisible = true;
+                        FirstNameVisible = false;
+                        LastNameVisible = false;
+                        EmailVisible = false;
+                        PhoneVisible = false;
+                        RoleVisible = false;
+                        BirthdateVisible = false;
+                        SaveVisible = false;
+                        PasswordVisible = false;
+                        ConfirmVisible = false;
+                    }
+                    else if (x == 0)
+                    {
+                        await App.Current.MainPage.DisplayAlert("Failure!", "No Entry Can Be Blank", "Oops");
+                    }
+                    else if (x == 2)
+                    {
+                        await App.Current.MainPage.DisplayAlert("Failure!", "That's Not A Valid Email", "My Bad");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
         }
+
+        public int Id { get; set; }
 
         private string firstName;
         public string FirstName { get { return firstName; } set { SetProperty(ref firstName, value); } }
@@ -81,6 +145,9 @@ namespace Open_Hands.Views
 
         private string password;
         public string Password { get { return password; } set { SetProperty(ref password, value); } }
+
+        private string confirmPass;
+        public string ConfirmPass { get { return confirmPass; } set { SetProperty(ref confirmPass, value); } }
 
         private bool editVisible;
         public bool EditVisible { get { return editVisible; } set { SetProperty(ref editVisible, value); } }
@@ -108,6 +175,21 @@ namespace Open_Hands.Views
 
         private bool confirmVisible;
         public bool ConfirmVisible { get { return confirmVisible; } set { SetProperty(ref confirmVisible, value); } }
+
+        private bool nameVisible;
+        public bool NameVisible { get { return nameVisible; } set { SetProperty(ref nameVisible, value); } }
+
+        private bool orgEmailVisible;
+        public bool OrgEmailVisible { get { return orgEmailVisible; } set { SetProperty(ref orgEmailVisible, value); } }
+
+        private bool orgPhoneVisible;
+        public bool OrgPhoneVisible { get { return orgPhoneVisible; } set { SetProperty(ref orgPhoneVisible, value); } }
+
+        private bool orgBirthVisible;
+        public bool OrgBirthVisible { get { return orgBirthVisible; } set { SetProperty(ref orgBirthVisible, value); } }
+
+        private bool orgRoleVisible;
+        public bool OrgRoleVisible { get { return orgRoleVisible; } set { SetProperty(ref orgRoleVisible, value); } }
 
         private bool saveVisible;
         public bool SaveVisible { get { return saveVisible; } set { SetProperty(ref saveVisible, value); } }

@@ -8,7 +8,7 @@
         <StackLayout Padding="10,0,10,0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
             <Label Text="Your Profile" FontSize="20" VerticalOptions="Start" HorizontalOptions="Center"/>
             <Label Text=""/>
-            <Label HorizontalOptions="Center">
+            <Label HorizontalOptions="Center" IsVisible="{Binding NameVisible}">
                 <Label.Text>
                     <MultiBinding StringFormat="{} {0} {1}">
                         <Binding Path="FirstName"/>
@@ -16,10 +16,10 @@
                     </MultiBinding>
                 </Label.Text>
             </Label>
-            <Label Text="{Binding Email}" HorizontalOptions="Center"/>
-            <Label Text="{Binding PhoneNum}" HorizontalOptions="Center"/>
-            <Label Text="{Binding Birthdate, StringFormat ='{MM/dd/yyyy}'}" HorizontalOptions="Center"/>
-            <Label Text="{Binding Role}" HorizontalOptions="Center"/>
+            <Label Text="{Binding Email}" HorizontalOptions="Center" IsVisible="{Binding OrgEmailVisible}"/>
+            <Label Text="{Binding PhoneNum}" HorizontalOptions="Center" IsVisible="{Binding OrgPhoneVisible}"/>
+            <Label Text="{Binding Birthdate, StringFormat ='{0:MM/dd/yyyy}'}" HorizontalOptions="Center" IsVisible="{Binding OrgBirthVisible}"/>
+            <Label Text="{Binding Role}" HorizontalOptions="Center" IsVisible="{Binding OrgRoleVisible}"/>
 
             <Button x:Name="EditProfile" VerticalOptions="Center" Text="Edit Profile" Command="{Binding EditProfileCommand}" IsVisible="{Binding EditVisible}"/>
 
@@ -35,7 +35,7 @@
                 </Picker.Items>
             </Picker>
             <Entry Text="{Binding Password}" IsPassword="True" IsVisible="{Binding PasswordVisible}"/>
-            <Entry Text="{Binding ConfirmPassword}" IsPassword="True" IsVisible="{Binding ConfirmVisible}"/>
+            <Entry Text="{Binding ConfirmPass}" Placeholder="Confirm New Password" IsPassword="True" IsVisible="{Binding ConfirmVisible}"/>
 
             <Button x:Name="SaveProfile" VerticalOptions="Center" Text="Save Changes" Command="{Binding SaveProfileCommand}" IsVisible="{Binding SaveVisible}"/>
         </StackLayout>
